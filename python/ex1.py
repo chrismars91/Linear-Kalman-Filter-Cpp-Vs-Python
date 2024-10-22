@@ -46,27 +46,26 @@ real_tract = np.array(real_tract)
 track_from_sensor = np.array(track_from_sensor)
 track_from_kf = np.array(track_from_kf)
 
-# 3D Plot
+# 3D and Error Plot 
 # /////////////////////////////////////////
-# ax = plt.figure().add_subplot(projection='3d')
-# ax.plot(real_tract[:, 0], real_tract[:, 1], real_tract[:, 2], lw=2.0)
-# ax.scatter(track_from_sensor[:, 0], track_from_sensor[:, 1], track_from_sensor[:, 2])
-# ax.scatter(track_from_kf[:, 0], track_from_kf[:, 1], track_from_kf[:, 2], label="kalman")
-# ax.plot(track_from_kf[:, 0], track_from_kf[:, 1], track_from_kf[:, 2])
-# ax.set_xlabel("X Axis")
-# ax.set_ylabel("Y Axis")
-# ax.set_zlabel("Z Axis")
-# plt.legend()
-# plt.show()
+fig = plt.figure(figsize=plt.figaspect(0.5))
+ax = fig.add_subplot(1, 2, 1, projection='3d')
+ax.plot(real_tract[:, 0], real_tract[:, 1], real_tract[:, 2], lw=2.0, label="true path", color='k')
+ax.scatter(track_from_sensor[:, 0], track_from_sensor[:, 1], track_from_sensor[:, 2],
+           label="sensor", alpha=.5, s=1.5, color='crimson')
+ax.scatter(track_from_kf[:, 0], track_from_kf[:, 1], track_from_kf[:, 2], label="kalman", s=2)
+ax.plot(track_from_kf[:, 0], track_from_kf[:, 1], track_from_kf[:, 2])
+ax.set_xlabel("X Axis")
+ax.set_ylabel("Y Axis")
+ax.set_zlabel("Z Axis")
+ax.legend()
 
-
-# Filter error
-# /////////////////////////////////////////
+ax = fig.add_subplot(1, 2, 2)
 error_from_sensor = np.sum((real_tract - track_from_sensor) ** 2, axis=1) ** .5
 error_from_filter = np.sum((real_tract - track_from_kf[:, 0:3]) ** 2, axis=1) ** .5
-plt.plot(error_from_sensor + 1, label='sensor error')
-plt.plot(error_from_filter + 1, label='filter error')
-plt.yscale('log')
-plt.grid()
+ax.plot(error_from_sensor + 1, label='sensor error', color='crimson', alpha=.75)
+ax.plot(error_from_filter + 1, label='filter error')
+ax.set_yscale('log')
+ax.grid()
 plt.legend()
 plt.show()
