@@ -1,7 +1,0 @@
-
-
-1) In CMakeLists.txt file, change the path in set (PYTHON_EXECUTABLE "/Users/chrisbolig/anaconda3/bin/python") to your path
-1.5) to get my python, path I typed `import sys; print(sys.executable);` in a python console
-
-2) in a terminal cd into cpp folder then run this below:
-	cd build && cmake .. && make && cd .. && python setup.py install
