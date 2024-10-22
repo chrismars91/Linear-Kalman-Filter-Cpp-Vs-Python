@@ -4,7 +4,7 @@ Read the setup text file to help get a python executable version.
 <br><br>
 Modeled from https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
 <br><br>
-<img width="378" alt="Screen Shot 2024-10-21 at 8 33 51 PM" src="https://github.com/user-attachments/assets/cbb62cf8-e261-4c62-b9b1-44fcf497c285">
+<img width="306" alt="Screen Shot 2024-10-22 at 8 39 03 AM" src="https://github.com/user-attachments/assets/3b44c226-5ec2-43d0-a470-6d7eac9f5c5b">
 <br><br>
 <img width="969" alt="Screen Shot 2024-10-21 at 8 32 21 PM" src="https://github.com/user-attachments/assets/f7571431-7b69-4fce-8443-a33c5d99009a">
 <br><br>
