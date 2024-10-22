@@ -1,9 +1,9 @@
+1) In cpp/CMakeLists.txt file change the path in `set (PYTHON_EXECUTABLE "/Users/chrisbolig/anaconda3/bin/python")` to your path.
 
+1.5) To get my python exe path I typed `import sys; print(sys.executable);` into a python console.
 
-1) In cpp/CMakeLists.txt file, change the path in set (PYTHON_EXECUTABLE "/Users/chrisbolig/anaconda3/bin/python") to your path
-1.5) to get my python, path I typed `import sys; print(sys.executable);` in a python console
-
-2) in a terminal cd into cpp folder then run this command below:
+2) in a terminal cd into the cpp folder then run this command below:
 	mkdir build && cd build && cmake .. && make && cd .. && python setup.py install
+
 2.5) if the cpp/build folder already exists, run
 	cd build && cmake .. && make && cd .. && python setup.py install
