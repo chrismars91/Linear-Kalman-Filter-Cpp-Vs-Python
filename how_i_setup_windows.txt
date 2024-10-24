@@ -1,0 +1,61 @@
+I downloaded the repo from https://github.com/pybind/cmake_example/tree/master
+
+cd into folder
+type `https://github.com/pybind/cmake_example/tree/master`
+
+delete all file/folders except
+	pybind11
+	CMakeLists.txt
+	setup.py
+	pyproject.toml
+
+change cmake.txt to 
+////////////////////////////////////////////////////////////////////
+
+cmake_minimum_required(VERSION 3.4...3.18)
+project(kalmanfilter_cpp)
+
+add_subdirectory(pybind11)
+include_directories(Eigen)
+pybind11_add_module(kalmanfilter_cpp main.cpp kf.h)
+
+# EXAMPLE_VERSION_INFO is defined by setup.py and passed into the C++ code as a
+# define (VERSION_INFO) here.
+target_compile_definitions(kalmanfilter_cpp
+                           PRIVATE VERSION_INFO=${EXAMPLE_VERSION_INFO})
+
+////////////////////////////////////////////////////////////////////
+
+in setup.py, change setup func args to
+////////////////////////////////////////////////////////////////////
+setup(
+    name="kalmanfilter_cpp",
+    version="0.0.1",
+    author="chris bolig",
+    author_email="chris.j.bolig@gmail.com",
+    description="A test project using pybind11 and CMake",
+    long_description="",
+    ext_modules=[CMakeExtension("kalmanfilter_cpp")],
+    cmdclass={"build_ext": CMakeBuild},
+    zip_safe=False,
+    extras_require={"test": ["pytest>=6.0"]},
+    python_requires=">=3.7",
+)
+////////////////////////////////////////////////////////////////////
+
+
+go to https://github.com/chrismars91/Linear-Kalman-Filter-Cpp-Vs-Python/tree/main/cpp and copy
+	eigen
+	main.cpp
+	kf.h
+
+place in cmake_example
+
+run
+	mkdir build
+	set PATH="C:\Program Files\CMake\bin";%PATH%
+	cd build
+	cmake ..
+	cd ..
+	cd ..
+	pip install ./cmake_example
